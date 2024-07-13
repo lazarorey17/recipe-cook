@@ -1,0 +1,39 @@
+CREATE TABLE Recipes (
+    id INT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    sourceCountry VARCHAR(255),
+    image VARCHAR(255),
+    description TEXT,
+    instructionCook TEXT
+);
+
+
+CREATE TABLE Ingredients (
+    id INT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    typeId INT,
+    FOREIGN KEY (typeId) REFERENCES IngredientTypes(id)
+);
+
+
+CREATE TABLE IngredientTypes (
+    id INT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE RecipeIngredients (
+    recipeId INT,
+    ingredientId INT,
+    count DECIMAL(10, 2),
+    unitMeasure VARCHAR(50),
+    PRIMARY KEY (recipeId, ingredientId),
+    FOREIGN KEY (recipeId) REFERENCES Recipes(id),
+    FOREIGN KEY (ingredientId) REFERENCES Ingredients(id)
+);
+
+
+Relationships:
+Recipes to RecipeIngredients: One-to-Many (one recipe can have many ingredients)
+Ingredients to RecipeIngredients: One-to-Many (one ingredient can be used in many recipes)
+IngredientTypes to Ingredients: One-to-Many (one type can have many ingredients)
