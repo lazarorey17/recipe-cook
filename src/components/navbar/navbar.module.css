@@ -1,0 +1,35 @@
+.profileStyle{
+    margin-left: 24px;
+    color: #2932af;
+    text-decoration: none;
+}
+
+.inputStyle{
+    font-size: 16;
+    padding: '6px 12px';
+    border-radius: 4;
+    border: 'none';
+    width: 200;
+}
+.mainContainer{
+    margin-bottom: 14px;
+    width: '100%';
+    display: 'flex';
+}
+
+.containerP{
+    flex: 1;
+    display: 'flex';
+}
+
+.AnunceStyle{
+    font-size: 24;
+    font-weight: bold;
+}
+
+.subContainer{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}

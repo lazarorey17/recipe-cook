@@ -1,10 +1,9 @@
 import './App.css';
-import Navbar from './components/navbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import MyRoute from './routes';
 
 function App() {
-  return (
-    <Navbar/>
-  );
+  return <MyRoute/>;
 }
 
 export default App;

@@ -1,0 +1,1 @@
+export const LIKE_RECIPE_STOREGE_KEY = 'likedRecipe';
