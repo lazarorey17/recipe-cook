@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { LIKE_RECIPE_STOREGE_KEY } from "../../../../utils/constants";
 import RecipeItem from "../../../../components/recipes/components/recipeItem";
 import { useNavigate } from "react-router-dom";
-import imgAlt from "../../../../assets/image/img-cooking.png";
 
 const LikedRecipe = ()=>{
 
-    /*const [events, setEvents] = useState([]);
+    const [recipe, setRecipe] = useState([]);
     const [isLoading, setIsloading] = useState(false);
     const [error, setError] = useState({});
     const navigate = useNavigate();
@@ -19,11 +18,11 @@ const LikedRecipe = ()=>{
                 const result = [];
                 for(const recid of likedRecipe)
                 {
-                    const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events/${recid}.json?apikey=${import.meta.env.VITE_TICKETMASTER_APY_KEY}`);
+                    const response = await fetch(`http://localhost:8080/recipe_api/apirecipe/recipes/${recid}`);
                     const data = await response.json();
                     result.push(data);
                 }
-                setEvents(result);
+                setRecipe(result);
             } catch (error) {
                 setError(error);
             }
@@ -35,8 +34,8 @@ const LikedRecipe = ()=>{
         fectRecipeDetails();
     }, []);
 
-    const handleEventItemClick = (recid) =>{
-        navigate(`/detail/${recid}`);
+    const handleRecipeItemClick = (id) =>{
+        navigate(`/detail/${id}`);
     };
 
     if(Object.keys(error).length > 0){
@@ -44,9 +43,21 @@ const LikedRecipe = ()=>{
     }
     if(isLoading){
         return <div>Loading...</div>
-    }*/
+    }
+
     return(
-        <div>Liked recipes</div>
+        <div>
+            {recipe.map((recipeItem,index)=> (
+                <RecipeItem 
+                    key={`liked-event-item-${recipeItem.id}-${index}`}
+                    name={recipeItem.name}
+                    info={recipeItem.descriction}
+                    image={recipeItem.intruction}
+                    onRecipeClick={handleRecipeItemClick}
+                    id={recipeItem.id}
+                />
+            ))}
+        </div>
     );
 };
 
